@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="notranslate wf-ibmplexsans-n4-active wf-inter-n4-active wf-active" lang="en">
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title>🌍 Jocund | Join Us. Change the world.</title>
+    <link rel="icon" href="{% static 'images/logo/main_logo.png' %}"
+
+
+    <link rel="preload" href="{% static 'css/e950135ece9f0b0d.css' %}" as="style">
+    <link rel="stylesheet" href="{% static 'css/e950135ece9f0b0d.css' %}" data-n-g="">
+    <link rel="preload" href="{% static 'css/719f44d6cce7cd0f.css' %}" as="style">
+    <link rel="preload" href="{% static 'css/787821a2b7718585.css' %}" as="style">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer="" nomodule="" src="{% static 'js/chunks/polyfills-5cd94c89d3acac5f.js' %}"></script>
+    <script src="{% static 'js/chunks/webpack-87be6aea176f6282.js' %}" defer=""></script>
+    <script src="{% static 'js/chunks/framework-568b840ecff66744.js' %}" defer=""></script>
+    <script src="{% static 'js/chunks/main-90ea6749a2c4f357.js' %}" defer=""></script>
+
+
+
+</head>
+
+<body class="app">
+    <div class="Header_header__c7sEG">
+        <div class="container Header_container__ZF_iK">
+            <a class="Logo_logo__nj7RB Header_logo__Y_FUf" href="/">
+                <span>
+                    <span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 152px; height: initial; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; opacity: 1; border: 0px none; margin: 0px; padding: 0px; position: relative; max-width: 100%;">
+                        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; opacity: 1; border: 0px none; margin: 0px; padding: 0px; max-width: 100%;">
+                            <img style="display: block; max-width: 100%; width: initial; height: initial; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; opacity: 1; border: 0px none; margin: 0px; padding: 0px;" alt="" aria-hidden="true" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"></span>
+                <img alt="EarthFund" src="{% static 'images/logo/main_logo.png' %}" decoding="async" data-nimg="intrinsic" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: medium none; margin: auto; display: block;"></span>
+                </span>
+
+            </a>
+            <div class="Header_wrapper__YaZq_">
+                <nav class="Header_nav__eRLoX">
+                           <a class="Header_link__ikBIz" href="#">About Jocund</a>
+                            <a class="Header_link__ikBIz" href="">Offers</a>
+                            <a class="Header_link__ikBIz" href="/jclass/">J-Class</a>
+            </div>
+            <span style="margin-left: 1600px; font-weight: bolder;">{{ user.username }}</span>
+            <button class="Header_burger__I19bE"></button>
+            <a style="cursor: pointer;" href="/logout/" class="button-sm Header_button__cj5WR">Logout</a>
+
+        </div>
+    </div>
+
+    <div class="layout">
+        <div class="profile">
+            <div class="profile__picture"><img src="{% static 'images/profile/' %}{{ user.photo }}" alt="pp" /></div>
+            <div class="profile__header">
+                <div class="profile__account">
+                    <h4 class="profile__username">{{ user.NAME }}</h4>
+
+                </div>
+                <div class="profile__edit">
+                    {% if user.is_student %}
+                    <a class="profile__button" href="request-money.html">Request</a>
+                    {% endif %}
+                    <a class="profile__button" href="/transaction/"  {% if user.is_merchant %} style="display:none;"   {% endif %}>Send</a></div>
+            </div>
+            {% if user.is_student %}
+            <div class="profile__stats">
+                <div class="profile__stat">
+                    <div class="profile__icon profile__icon--gold"><img class="j_money_icon" src="{% static 'images/j-MONEY_symbol.png' %}" alt=""></div>
+                    <div class="profile__value">{{ user.balance }}
+                        <div class="profile__key">Wallet</div>
+                    </div>
+                </div>
+                <div class="profile__stat">
+                    <div class="profile__icon profile__icon--blue"><i class="fas fa-signal"></i></div>
+                    <div class="profile__value">{{ ranking }}
+                        <div class="profile__key">Ranking</div>
+                    </div>
+                </div>
+                <div class="profile__stat">
+                    <div class="profile__icon profile__icon--pink"><img class="j_money_icon" src="{% static 'images/earned.png' %}" alt=""></div>
+                    <div class="profile__value">{{ user.TE }}
+                        <div class="profile__key">Total earned</div>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 30px;">{{ user.DEPT }} | {{ user.SEM }} SEM | {{ user.username }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div style=" max-width: 900px; display: flex; margin: 44px auto; justify-content: center; align-items: center;">
+        <table id="customers" style="margin: 0 auto;">
+            <tr>
+              <th>Transaction id</th>
+              <th>Date</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Jocund</th>
+            </tr>
+            {% if transaction %}
+            {% for t in transaction %}
+            <tr>
+              <td>{{ t.trans_id }}</td>
+              <td>{{ t.date }}</td>
+              <td>{{ t.from_user }}</td>
+              <td>{{ t.to_user }}</td>
+              <td>{{ t.jocund }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </table>
+    </div>
+
+</body>
+
+</html>

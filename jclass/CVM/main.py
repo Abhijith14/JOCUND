@@ -279,7 +279,7 @@ def detection_start():
 
 
 def get_menu():
-    folderPath = "menu"
+    folderPath = "jclass/CVM/menu"
     myList = os.listdir(folderPath)
     overlayList = [cv2.imread(f'{folderPath}/{imPath}') for imPath in myList]
     header = overlayList[0]
@@ -542,14 +542,5 @@ def drawing_mode():
     return False
 
 
-if __name__ == '__main__':
-    detection_start()
-
-
-# todo: 1. bring all control elements infront of imgCanvas.
-# todo: 2. Find an option to select Color for pen and brush
-# todo: 3. Able to move the elements across
-# todo: 4. Check if diagram is a closed diagram, usage of brush tool to fill colors.
-# todo: 5. If not a closed diagram, ???
-# todo: 6. Shape Wheel. How to choose and how to implement.
-# todo: 7. Undo-Redo, how to implement.
+# if __name__ == '__main__':
+    # detection_start()
