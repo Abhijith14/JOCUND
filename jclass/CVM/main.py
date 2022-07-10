@@ -29,7 +29,7 @@ tipIds = [4, 8, 12, 16, 20]
 ################################
 # Color Variables
 drawColor = (255, 0, 255)
-col1, col2, col3, col4 = (243, 179, 147), (134, 144, 228), (117, 215, 247), (153, 199, 145)
+col1, col2, col3, col4 = (243, 179, 147), (153, 199, 145), (117, 215, 247), (134, 144, 228)
 tc1, tc2, tc3, tc4 = col1, col2, col3, col4
 selectionCol = (0, 0, 255)
 ################################
@@ -140,7 +140,7 @@ def add_fps(image):
     return image
 
 
-def add_desc(image, selectionCol, heading, s1, s2, s3=''):
+def add_desc(image, selectionCol, heading, s1="", s2="", s3=''):
     cv2.putText(image, heading, (800, 200), cv2.FONT_HERSHEY_COMPLEX, 1, selectionCol, 2)
     cv2.putText(image, s1, (800, 250), cv2.FONT_HERSHEY_SIMPLEX, 1,
                 selectionCol, 1)
@@ -229,7 +229,8 @@ def detection_start():
                                                  s3='the menu gesture.')
 
                             elif abs(rx3 - rx1) < 20:
-                                selectionCol = (0, 0, 255)
+
+                                selectionCol = (0, 255, 0)
                                 col1, col2, col3, col4 = tc1, selectionCol, tc3, tc4
 
                                 image = add_desc(image, selectionCol,
@@ -257,13 +258,15 @@ def detection_start():
                                                  s3='new screens.')
 
                             elif abs(rx3 - (rx1 + 100)) < 20:
-                                selectionCol = (0, 255, 0)
+                                selectionCol = (0, 0, 255)
                                 col1, col2, col3, col4 = tc1, tc2, tc3, selectionCol
 
                                 image = add_desc(image, selectionCol,
-                                                 heading='Demo Mode',
-                                                 s1='A mode for working with',
-                                                 s2='images and videos.')
+                                                 heading='Exit from the program')
+
+                                if d2 < 30:
+                                    print("Exit Mode")
+                                    exit()
 
                             else:
                                 col1, col2, col3, col4 = tc1, tc2, tc3, tc4
@@ -433,7 +436,7 @@ def drawing_mode():
                                     return True
 
                             elif abs(rx3 - rx1) < 20:
-                                selectionCol = (0, 0, 255)
+                                selectionCol = (0, 255, 0)
                                 col1, col2, col3, col4 = tc1, selectionCol, tc3, tc4
 
                                 image = add_desc(image, selectionCol,
@@ -453,13 +456,16 @@ def drawing_mode():
                                                  s3='new screens.')
 
                             elif abs(rx3 - (rx1 + 100)) < 20:
-                                selectionCol = (0, 255, 0)
+                                selectionCol = (0, 0, 255)
                                 col1, col2, col3, col4 = tc1, tc2, tc3, selectionCol
 
                                 image = add_desc(image, selectionCol,
-                                                 heading='Demo Mode',
-                                                 s1='A mode for working with',
-                                                 s2='images and videos.')
+                                                 heading='Exit from the program')
+
+                                if d2 < 30:
+                                    print("Exit Mode")
+                                    exit()
+
                             else:
                                 col1, col2, col3, col4 = tc1, tc2, tc3, tc4
 
@@ -542,5 +548,5 @@ def drawing_mode():
     return False
 
 
-# if __name__ == '__main__':
-    # detection_start()
+if __name__ == '__main__':
+    detection_start()

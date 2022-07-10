@@ -1,4 +1,5 @@
 {% load static %}
+{% load to_str %}
 <!DOCTYPE html>
 <html class="notranslate wf-ibmplexsans-n4-active wf-inter-n4-active wf-active" lang="en">
 
@@ -8,7 +9,7 @@
     <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
     <title>🌍 Jocund | Join Us. Change the world.</title>
-    <link rel="icon" href="{% static 'images/logo/main_logo.png' %}"
+    <link rel="icon" href="{% static 'images/logo/main_logo.png' %}">
 
 
     <link rel="preload" href="{% static 'css/e950135ece9f0b0d.css' %}" as="style">
@@ -43,9 +44,10 @@
                             <a class="Header_link__ikBIz" href="">Offers</a>
                             <a class="Header_link__ikBIz" href="/jclass/">J-Class</a>
             </div>
-            <span style="margin-left: 1600px; font-weight: bolder;">{{ user.username }}</span>
-            <button class="Header_burger__I19bE"></button>
-            <a style="cursor: pointer;" href="/logout/" class="button-sm Header_button__cj5WR">Logout</a>
+            <div>
+                <span style="margin-left: 1200px; font-weight: bolder;">{{ user.username }}</span>
+                <a style="cursor: pointer; margin-left:8px;" href="/logout/" class="button-sm Header_button__cj5WR">Logout</a>
+            </div>
 
         </div>
     </div>
@@ -60,7 +62,7 @@
                 </div>
                 <div class="profile__edit">
                     {% if user.is_student %}
-                    <a class="profile__button" href="request-money.html">Request</a>
+                    <a class="profile__button" href="/request/">Request</a>
                     {% endif %}
                     <a class="profile__button" href="/transaction/"  {% if user.is_merchant %} style="display:none;"   {% endif %}>Send</a></div>
             </div>
@@ -89,8 +91,6 @@
             {% endif %}
         </div>
     </div>
-
-
     <div style=" max-width: 900px; display: flex; margin: 44px auto; justify-content: center; align-items: center;">
         <table id="customers" style="margin: 0 auto;">
             <tr>
@@ -107,7 +107,9 @@
               <td>{{ t.date }}</td>
               <td>{{ t.from_user }}</td>
               <td>{{ t.to_user }}</td>
-              <td>{{ t.jocund }}</td>
+                {% if user.username ==  t.from_user|to_str  %} <td style="color:red;">
+                    {% else %}<td style="color:green;">      {% endif %}
+                  {% if user.username ==  t.from_user|to_str  %} - {% else %}+{% endif %}   {{ t.jocund }}</td>
             </tr>
             {% endfor %}
             {% endif %}

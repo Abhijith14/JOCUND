@@ -53,3 +53,8 @@ def transaction_view(request):
 
     return render(request, 'transaction.html', context)
 
+
+
+def request_view(request):
+    return render(request, 'request.html', {})
+
