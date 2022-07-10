@@ -1,5 +1,5 @@
 <p align="center">
-<img src='assets/logo.png' align="center" width=300>
+<img src='static/images/demo2.png' align="center">
 </p>
 <h1 align="center">
   <b>PROJECT JOCUND !!</b>
