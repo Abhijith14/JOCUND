@@ -38,3 +38,5 @@ def dash_view(request):
     context['transaction'] = trans_list
 
     return render(request, 'dashboard.html', context)
+
+

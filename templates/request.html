@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Jocund</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class="login-wrapper">
+        <div class="signin">
+
+            <form method="post" autocomplete="off">
+                {% csrf_token %}
+                <div class="group head">
+                    <h2>Request your deserved Jocund</h2>
+                </div>
+                <div class="group">
+                    <label for="username-field">Upload proof</label><br>
+                    <input type="file" required>
+                </div>
+                <div class="group">
+
+                    <button type="button" onclick="sub_fn();"><span>Request</span></button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
+<script>
+
+    function sub_fn(){
+
+        if (confirm("Are you sure to proceed ?")) {
+             location.href = '/dashboard/';
+        }
+
+    }
+
+</script>
+</body>
+
+</html>

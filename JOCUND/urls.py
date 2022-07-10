@@ -19,7 +19,7 @@ from django.urls import path
 from homepage.views import homepage
 from authentication.views import login_view, logout_view, test
 from dashboard.views import dash_view
-from transaction.views import transaction_view
+from transaction.views import transaction_view, request_view
 from jclass.views import jclass_view, jclass_launch
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('dashboard/', dash_view, name='dashboard'),
     path('transaction/', transaction_view, name='transaction'),
+    path('request/', request_view, name='request'),
     path('jclass/', jclass_view, name='jclass'),
     path('jclassL/', jclass_launch, name='jclassL'),
     path('test/', test, name='test'),
